@@ -9,12 +9,13 @@ redisclient.on("error", function (err) {
   console.log("Error " + err);
 });
 
-app.get('/', function (req, res) {
-  console.log('req: ' + JSON.stringify({q:1,b:2}, null, 2));
-  redisclient.incr("counter", function (res) {
-    console.log('args: ' + JSON.stringify(arguments, null, 2));
-    console.log('res: ' + JSON.stringify(res, null, 2));
-    res.send('Hello world\n');
+redisclient.on("ready", function () {
+  console.log("Redis is ready");
+
+  app.get('/', function (req, res) {
+    redisclient.incr("counter", function (err, reply) {
+      res.send('Redis reply: ' + reply + '\n');
+    });
   });
 });
 
