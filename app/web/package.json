@@ -1,0 +1,10 @@
+{
+  "name": "simple-web-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "express": "4.x",
+    "redis": "0.x"
+  }
+}
