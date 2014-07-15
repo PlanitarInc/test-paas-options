@@ -7,8 +7,8 @@ try() {
 
   count=`curl -s web-app:8080 | sed 's/^Redis reply: \([0-9]*\)$/\1/'`
 
-  if [ $count != $expected_count ]; then
-    echo "[!!!] Failed: expected ${expected_count}, got ${count}" >&2
+  if [ "$count" != "$expected_count" ]; then
+    echo "[!!!] Failed: expected '${expected_count}', got '${count}'" >&2
     exit 2
   fi
 }
