@@ -5,10 +5,10 @@ all: docker
 build:
 	make -C app build
 
-docker: build
+docker:
 	make -C docker run
 
-coreos: build
+coreos:
 	make -C coreos run
 
 clean:
