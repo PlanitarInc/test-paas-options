@@ -1,4 +1,4 @@
-.PHONY: all build docker coreos clean
+.PHONY: all build docker coreos clean push
 
 all: docker
 
@@ -15,3 +15,6 @@ clean:
 	make -C app clean
 	make -C docker clean
 	make -C coreos clean
+
+push:
+	make -C app push
