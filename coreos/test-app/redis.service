@@ -1,0 +1,11 @@
+[Unit]
+Description=Redis Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=/bin/bash -c '/usr/bin/docker rm -f redis || true'
+ExecStart=/usr/bin/docker run --name redis -p 6379:6379 redis
+ExecStartPost=/bin/bash -c "/usr/bin/etcdctl set /service/redis `ifconfig enp0s8 | sed -n 's/^.*inet \([0-9.]*\).*$/\1/p'`"
+ExecStop=/usr/bin/docker rm redis
+ExecStop=/usr/bin/etcdctl delete /service/redis

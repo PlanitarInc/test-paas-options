@@ -1,0 +1,13 @@
+[Unit]
+Description=Web App
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=/bin/bash -c '/usr/bin/docker rm -f web-app-1 || true'
+ExecStart=/usr/bin/docker run --name web-app-1 -p 8080:8080 korya/test-web-app:coreos
+ExecStop=/usr/bin/docker rm -f web-app-1
+ExecStopPost=/usr/bin/docker rmi -f korya/test-web-app:coreos
+
+[X-Fleet]
+X-Conflicts=web-app-*.service
