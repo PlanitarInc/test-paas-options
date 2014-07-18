@@ -1,4 +1,6 @@
-.PHONY: build docker clean
+.PHONY: all build docker clean
+
+all: docker
 
 build:
 	make -C app build
