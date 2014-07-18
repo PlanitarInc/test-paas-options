@@ -1,14 +1,14 @@
-.PHONY: run test clean build_test_app
+.PHONY: run test clean build
 
 run: test
 
+build:
+	make -C test build
+
 clean:
-	docker rmi -f test-paas-test-app
+	make -C test clean
 
-build_test_app:
-	cd test && docker build -t test-paas-test-app .
-
-test: build_test_app
+test: build
 	docker run -d --name test-redis redis
 	docker run -d --name test-web-app --link test-redis:redis korya/test-web-app
 	sleep 1 # Sleep a sec to allow redis get up
