@@ -7,6 +7,7 @@ build:
 
 clean:
 	make -C test clean
+	docker rmi -f redis || true
 
 test: build
 	docker run -d --name test-redis redis

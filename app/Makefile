@@ -1,8 +1,7 @@
 .PHONY: build clean
 
 build:
-	docker build -t korya/test-web-app web
-	docker push korya/test-web-app
+	make -C web build
 
 clean:
-	docker rmi -f korya/test-web-app
+	make -C web clean
