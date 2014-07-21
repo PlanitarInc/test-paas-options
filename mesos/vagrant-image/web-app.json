@@ -1,0 +1,13 @@
+{
+  "container": {
+    "image": "docker:///korya/test-web-app",
+    "options" : [
+      "--link", "redis:redis"
+    ]
+  },
+  "id": "web-app",
+  "instances": "1",
+  "cpus": ".5",
+  "mem": "64",
+  "uris": [ ]
+}

@@ -1,0 +1,13 @@
+{
+  "container": {
+    "image": "docker:///redis",
+    "options" : [
+      "--name", "redis"
+    ]
+  },
+  "id": "redis",
+  "instances": "1",
+  "cpus": ".5",
+  "mem": "128",
+  "uris": [ ]
+}
